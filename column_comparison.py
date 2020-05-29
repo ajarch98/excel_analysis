@@ -1,7 +1,7 @@
+from excel_core import duplicates_check, none_check
 import pandas as pd
 import datetime
 import os
-from .excel_core import duplicates_check, none_check
 
 # LOC = locations of file to use
 # Place primary file in A_LOC
@@ -22,7 +22,7 @@ B_COL_NAME = "LPO"
 # files stored in folder with syntax
 # Hour-Minute-Second.date-month-year
 # Change RESULTS_PATH to change location of stored data
-RESULTS_PATH = r"C:\Users\Pavilion\Documents\repos\excel_scripts\results"
+RESULTS_PATH = r"C:\Users\Pavilion\Documents\repos\excel_repo\results"
 today_date = datetime.datetime.now()
 today_day = today_date.strftime("%H-%M-%S.%d-%B-%Y")
 FOLDER_PATH = os.path.join(RESULTS_PATH, today_day)
