@@ -1,0 +1,19 @@
+Contents:
+Input file 1: C:\Users\PAVILION\Documents\repos\excel_scripts\files\SOSI.xlsx
+Input file 2: C:\Users\PAVILION\Documents\repos\excel_scripts\files\NYUMBA.xlsx
+
+Rows where LPO in C:\Users\PAVILION\Documents\repos\excel_scripts\files\SOSI.xlsx is NONE: C:\Users\Pavilion\Documents\repos\excel_scripts\results\15-25-28.28-May-2020\null_SOSI.xlsx
+Rows where LPO in C:\Users\PAVILION\Documents\repos\excel_scripts\files\NYUMBA.xlsx is NONE: C:\Users\Pavilion\Documents\repos\excel_scripts\results\15-25-28.28-May-2020\null_NYUMBA.xlsx
+
+Rows where LPO in C:\Users\PAVILION\Documents\repos\excel_scripts\files\SOSI.xlsx is duplicated: C:\Users\Pavilion\Documents\repos\excel_scripts\results\15-25-28.28-May-2020\null_SOSI.xlsx
+Rows where LPO in C:\Users\PAVILION\Documents\repos\excel_scripts\files\NYUMBA.xlsx is duplicated: C:\Users\Pavilion\Documents\repos\excel_scripts\results\15-25-28.28-May-2020\null_NYUMBA.xlsx
+
+Rows where LPO has matches in C:\Users\PAVILION\Documents\repos\excel_scripts\files\NYUMBA.xlsx LPO: C:\Users\Pavilion\Documents\repos\excel_scripts\results\15-25-28.28-May-2020\matches_SOSI.xlsx
+NB: if C:\Users\Pavilion\Documents\repos\excel_scripts\results\15-25-28.28-May-2020\matches_SOSI.xlsx does not exist, no matches were found
+Rows where LPO has matches in C:\Users\PAVILION\Documents\repos\excel_scripts\files\SOSI.xlsx LPO: C:\Users\Pavilion\Documents\repos\excel_scripts\results\15-25-28.28-May-2020\matches_NYUMBA.xlsx
+NB: if C:\Users\Pavilion\Documents\repos\excel_scripts\results\15-25-28.28-May-2020\matches_NYUMBA.xlsx does not exist, no matches were found
+
+Rows where LPO does not have matches in C:\Users\PAVILION\Documents\repos\excel_scripts\files\NYUMBA.xlsx LPO: C:\Users\Pavilion\Documents\repos\excel_scripts\results\15-25-28.28-May-2020\non_matches_SOSI.xlsx
+NB: if C:\Users\Pavilion\Documents\repos\excel_scripts\results\15-25-28.28-May-2020\non_matches_NYUMBA.xlsx does not exist, no empty values were found.
+Rows where LPO does not have matches in C:\Users\PAVILION\Documents\repos\excel_scripts\files\NYUMBA.xlsx LPO: C:\Users\Pavilion\Documents\repos\excel_scripts\results\15-25-28.28-May-2020\non_matches_NYUMBA.xlsx
+NB: if C:\Users\Pavilion\Documents\repos\excel_scripts\results\15-25-28.28-May-2020\non_matches_NYUMBA.xlsx does not exist, no empty values were found.
