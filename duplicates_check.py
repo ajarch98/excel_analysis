@@ -1,7 +1,7 @@
 import pandas as pd
 import datetime
 import os
-from .core_excel import duplicates_check, none_check
+from .excel_core import duplicates_check, none_check
 
 # LOC = location of file to use
 LOC = r"C:\Users\PAVILION\Desktop\NYUMBA.xlsx"

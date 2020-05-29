@@ -1,7 +1,7 @@
 import pandas as pd
 import datetime
 import os
-from .core_excel import duplicates_check, none_check
+from .excel_core import duplicates_check, none_check
 
 # LOC = locations of file to use
 # Place primary file in A_LOC
