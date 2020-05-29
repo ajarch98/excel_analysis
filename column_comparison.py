@@ -28,8 +28,6 @@ today_day = today_date.strftime("%H-%M-%S.%d-%B-%Y")
 FOLDER_PATH = os.path.join(RESULTS_PATH, today_day)
 os.mkdir(FOLDER_PATH)
 
-LOG_FILE = os.path.join(FOLDER_PATH, 'log.txt')
-
 
 def check_dfs_and_print(df, comp_df, col_name, matches_file, non_matches_file):
     values = comp_df[col_name].values.astype(str)
@@ -60,34 +58,35 @@ def compare_dfs(
     """
     def output_log():
         """Write log for script to LOG_FILE."""
+        log_file = os.path.join(folder_path, 'log.txt')
         log_str = (
             "Contents:\n"
-            f"Input file 1: {A_LOC}\n"
-            f"Input file 2: {B_LOC}\n"
+            f"Input file 1: {a_file}\n"
+            f"Input file 2: {b_file}\n"
             "\n"
-            f"Rows where {A_COL_NAME} in {A_LOC} is NONE: {null_file_a}\n"
-            f"Rows where {B_COL_NAME} in {B_LOC} is NONE: {null_file_b}\n"
+            f"Rows where {a_col_name} in {a_file} is NONE: {null_file_a}\n"
+            f"Rows where {b_col_name} in {b_file} is NONE: {null_file_b}\n"
             "\n"
-            f"Rows where {A_COL_NAME} in {A_LOC} is duplicated: {duplicates_file_a}\n"
-            f"Rows where {B_COL_NAME} in {B_LOC} is duplicated: {duplicates_file_b}\n"
+            f"Rows where {a_col_name} in {a_file} is duplicated: {duplicates_file_a}\n"
+            f"Rows where {b_col_name} in {b_file} is duplicated: {duplicates_file_b}\n"
             "\n"
-            f"Rows where {A_COL_NAME} has matches in "
-            f"{B_LOC} {B_COL_NAME}: {matches_file_a}\n"
+            f"Rows where {a_col_name} has matches in "
+            f"{b_file} {b_col_name}: {matches_file_a}\n"
             f"NB: if {matches_file_a} does not exist, no matches were found\n"
-            f"Rows where {B_COL_NAME} has matches in "
-            f"{A_LOC} {A_COL_NAME}: {matches_file_b}\n"
+            f"Rows where {b_col_name} has matches in "
+            f"{a_file} {a_col_name}: {matches_file_b}\n"
             f"NB: if {matches_file_b} does not exist, no matches were found\n"
             "\n"
-            f"Rows where {A_COL_NAME} does not have matches in "
-            f"{B_LOC} {B_COL_NAME}: {non_matches_file_a}\n"
+            f"Rows where {a_col_name} does not have matches in "
+            f"{b_file} {b_col_name}: {non_matches_file_a}\n"
             f"NB: if {non_matches_file_a} does not exist, "
             "no empty values were found.\n"
-            f"Rows where {B_COL_NAME} does not have matches in "
-            f"{B_LOC} {A_COL_NAME}: {non_matches_file_b}\n"
+            f"Rows where {b_col_name} does not have matches in "
+            f"{b_file} {a_col_name}: {non_matches_file_b}\n"
             f"NB: if {non_matches_file_b} does not exist, "
             "no empty values were found."
             )
-        with open(LOG_FILE, 'w+') as f:
+        with open(log_file, 'w+') as f:
             f.write(log_str)
 
     matches_file_a = os.path.join(folder_path, f'matches_{a_file}')
