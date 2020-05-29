@@ -1,5 +1,7 @@
 import xlrd
 import xlsxwriter
+import os
+import datetime
 
 # USERS_LOC = location of usernames_file
 # USERS_COL = column of usernames in file
@@ -15,7 +17,11 @@ HR_COL = 2
 # or the new results will be appended to the bottom
 # of the generated file
 # RESULTS_PATH = intended path for results file
-RESULTS_PATH = r"C:\Users\PAVILION\Documents\repos\excel_repo\results\name_search.xlsx"
+RESULTS_FOLDER_PATH = r"C:\Users\PAVILION\Documents\repos\excel_repo\results"
+today_date = datetime.datetime.now()
+date_str = today_date.strftime("%Y-%b-%m_%H-%M-%S")
+RESULTS_FILE = f"name_search_{date_str}.xlsx"
+RESULTS_PATH = os.path.join(RESULTS_FOLDER_PATH, RESULTS_FILE)
 
 users_wb = xlrd.open_workbook(USERS_LOC)
 users_sheet = users_wb.sheet_by_index(0)
