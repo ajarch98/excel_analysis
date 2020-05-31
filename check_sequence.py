@@ -17,7 +17,7 @@ DESKTOP_PATH = r"C:\Users\Pavilion\Desktop"
 today_date = datetime.datetime.now()
 today_day = today_date.strftime("%H-%M-%S.%d-%B-%Y")
 folder_path = os.path.join(DESKTOP_PATH, today_day)
-os.mkdir(folder_path)
+os.mkdirs(folder_path)
 SORTED_FILE = os.path.join(folder_path, 'unique.xlsx')
 MISSING_FILE = os.path.join(folder_path, 'missing_nos.txt')
 LOG_FILE = os.path.join(folder_path, 'log.txt')

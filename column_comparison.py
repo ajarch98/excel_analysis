@@ -26,7 +26,7 @@ RESULTS_PATH = r"C:\Users\Pavilion\Documents\repos\excel_repo\results"
 today_date = datetime.datetime.now()
 today_day = today_date.strftime("%H-%M-%S.%d-%B-%Y")
 FOLDER_PATH = os.path.join(RESULTS_PATH, today_day)
-os.mkdir(FOLDER_PATH)
+os.mkdirs(FOLDER_PATH)
 
 
 def check_dfs_and_print(df, comp_df, col_name, matches_file, non_matches_file):

@@ -19,7 +19,7 @@ DESKTOP_PATH = r"C:\Users\Pavilion\Desktop"
 today_date = datetime.datetime.now()
 today_day = today_date.strftime("%H-%M-%S.%d-%B-%Y")
 folder_path = os.path.join(DESKTOP_PATH, today_day)
-os.mkdir(folder_path)
+os.mkdirs(folder_path)
 FLAGGED_FILE = os.path.join(folder_path, 'non_std_len.xlsx')
 LOG_FILE = os.path.join(folder_path, 'log.txt')
 

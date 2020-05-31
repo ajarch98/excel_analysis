@@ -18,7 +18,7 @@ RESULTS_PATH = r"C:\Users\Pavilion\Documents\repos\excel_repo\results"
 today_date = datetime.datetime.now()
 today_day = today_date.strftime("%H-%M-%S.%d-%B-%Y")
 folder_path = os.path.join(RESULTS_PATH, today_day)
-os.mkdir(folder_path)
+os.mkdirs(folder_path)
 DUPLICATES_FILE = os.path.join(folder_path, 'duplicates.xlsx')
 NON_DUPLICATES_FILE = os.path.join(folder_path, 'unique.xlsx')
 NULL_FILE = os.path.join(folder_path, 'null.xlsx')
