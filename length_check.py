@@ -33,6 +33,9 @@ def output_log():
                f"Length checked: {LENGTH}\n"
                f"Rows where {COL_NAME} is non_standard: {FLAGGED_FILE}\n"
                f"NB, if {FLAGGED_FILE} does not exist, no values with"
+               f"length not of {LENGTH} were found.\n"
+               f"Rows where {COL_NAME} is of standard length: {CLEANED_FILE}\n"
+               f"NB, if {CLEANED_FILE} does not exist, no values with"
                f"length not of {LENGTH} were found."
                )
     with open(LOG_FILE, 'w+') as f:
