@@ -1,3 +1,4 @@
+from excel_core import output_df, none_check
 import pandas as pd
 import datetime
 import os
@@ -36,17 +37,6 @@ def output_log():
         f.write(log_str)
 
 
-def none_check(df):
-    """Flag None values in COL_NAME.
-
-    Output rows with None value in COL_NAME to NULL_FILE.
-    """
-    df[COL_NAME] = df[COL_NAME].map(lambda x: x.strip() if isinstance(x, str) else x)
-    none_df = df[(df[COL_NAME].isna()) | (df[COL_NAME] == "")]
-    if not none_df.empty:
-        none_df.to_excel(NULL_FILE)
-
-
 def alnum_check(df):
     """Flag non-decimal values in COL_NAME.
 
@@ -61,6 +51,6 @@ def alnum_check(df):
 
 if __name__ == "__main__":
     df = pd.read_excel(LOC, header=HEADER_ROW-1)
-    none_check(df)
+    none_check(df, COL_NAME, NULL_FILE)
     alnum_check(df)
     output_log()
