@@ -1,4 +1,5 @@
-from excel_core import duplicates_check, none_check
+from excel_core import duplicates_check, none_check,\
+    output_df
 import pandas as pd
 import datetime
 import os
@@ -29,20 +30,26 @@ FOLDER_PATH = os.path.join(RESULTS_PATH, today_day)
 os.mkdirs(FOLDER_PATH)
 
 
-def check_dfs_and_print(df, comp_df, col_name, matches_file, non_matches_file):
-    values = comp_df[col_name].values.astype(str)
-    df["check"] = df[col_name].map(lambda x: str(x) in values)
-    df.sort_values(by=col_name)
+def check_dfs_and_print(
+        df, comp_df,
+        df_col_name, comp_df_col_name,
+        matches_file, non_matches_file):
+    """Output matched and unmatched values in df and comp_df.
+
+    Check against df_col_name for df and comp_df_col_name for comp_df.
+    Output matched values to matches_file and unmatched_values to
+    non_matches_file."""
+    values = comp_df[comp_df_col_name].values.astype(str)
+    df["check"] = df[df_col_name].map(lambda x: str(x) in values)
+    df.sort_values(by=df_col_name)
 
     matched_df = df[df["check"] == True]
     matched_df = matched_df.drop(["check"], axis=1)
-    if not matched_df.empty:
-        matched_df.to_excel(matches_file)
+    output_df(df, matches_file)
 
     unmatched_df = df[df["check"] == False]
     unmatched_df = unmatched_df.drop(["check"], axis=1)
-    if not unmatched_df.empty:
-        unmatched_df.to_excel(non_matches_file)
+    output_df(df, non_matches_file)
 
 
 def compare_dfs(
@@ -103,13 +110,18 @@ def compare_dfs(
 
     a_df = none_check(a_df, a_col_name, null_file_a)
     b_df = none_check(b_df, b_col_name, null_file_b)
+    
     a_df = duplicates_check(a_df, a_col_name, duplicates_file_a)
     b_df = duplicates_check(b_df, b_col_name, duplicates_file_b)
 
     check_dfs_and_print(
-        a_df, b_df, a_col_name, matches_file_a, non_matches_file_a)
+        a_df, b_df,
+        a_col_name, b_col_name,
+        matches_file_a, non_matches_file_a)
     check_dfs_and_print(
-        b_df, a_df, b_col_name, matches_file_b, non_matches_file_b)
+        b_df, a_df,
+        b_col_name, a_col_name,
+        matches_file_b, non_matches_file_b)
     output_log()
 
 
