@@ -12,6 +12,7 @@ def duplicates_check(df, col_name, duplicates_file):
     non_duplicates_df = df.drop_duplicates(subset=col_name, keep=False)
     return non_duplicates_df
 
+
 def none_check(df, col_name, null_file):
     """Detect None values in col_name.
 
@@ -23,3 +24,9 @@ def none_check(df, col_name, null_file):
         none_df.to_excel(null_file)
     cleaned_df = df[(df[col_name].astype(str).str.len() > 0) & (df[col_name].notna())]
     return cleaned_df
+
+
+def output_df(df, file):
+    """Output df to file if df is not empty."""
+    if not df.empty:
+        df.to_excel(file)
