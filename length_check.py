@@ -39,13 +39,13 @@ def output_log():
         f.write(log_str)
 
 
-def check_lengths(df):
+def check_lengths(df, length):
     """
     Check lengths of values in column COL_NAME.
 
     Return df containing rows where column value size is not equal to LENGTH.
     """
-    df["check"] = df[COL_NAME][df[COL_NAME].astype(str).str.len() != LENGTH]
+    df["check"] = df[COL_NAME][df[COL_NAME].astype(str).str.len() != length]
     checked_df = df[df["check"].notna()]
     checked_df = checked_df.drop("check", axis=1)
     cleaned_df = df[df["check"].isna()]
@@ -56,5 +56,5 @@ def check_lengths(df):
 
 if __name__ == "__main__":
     df = pd.read_excel(LOC, header=HEADER_ROW-1)
-    check_lengths(df)
+    check_lengths(df, LENGTH)
     output_log()
