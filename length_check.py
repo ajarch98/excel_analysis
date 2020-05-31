@@ -1,6 +1,7 @@
 import pandas as pd
 import datetime
 import os
+from excel_core import output_df
 
 # LOC = location of file to use
 LOC = r"C:\Users\PAVILION\Desktop\SampleData3.xlsx"
@@ -21,6 +22,7 @@ today_day = today_date.strftime("%H-%M-%S.%d-%B-%Y")
 folder_path = os.path.join(DESKTOP_PATH, today_day)
 os.mkdirs(folder_path)
 FLAGGED_FILE = os.path.join(folder_path, 'non_std_len.xlsx')
+CLEANED_FILE = os.path.join(folder_path, 'std_len.xlsx')
 LOG_FILE = os.path.join(folder_path, 'log.txt')
 
 
@@ -46,8 +48,10 @@ def check_lengths(df):
     df["check"] = df[COL_NAME][df[COL_NAME].astype(str).str.len() != LENGTH]
     checked_df = df[df["check"].notna()]
     checked_df = checked_df.drop("check", axis=1)
-    if not checked_df.empty:
-        checked_df.to_excel(FLAGGED_FILE)
+    cleaned_df = df[df["check"].isna()]
+    cleaned_df = cleaned_df.drop("check", axis=1)
+    output_df(cleaned_df, CLEANED_FILE)
+    output_df(checked_df, FLAGGED_FILE)
 
 
 if __name__ == "__main__":
