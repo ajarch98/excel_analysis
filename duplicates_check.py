@@ -4,7 +4,7 @@ import datetime
 import os
 
 # LOC = location of file to use
-LOC = r"C:\Users\PAVILION\Desktop\NYUMBA.xlsx"
+LOC = r"C:\Users\PAVILION\Documents\repos\excel_repo\files\NYUMBA.xlsx"
 # Column number of Header (starts from 1)
 HEADER_ROW = 1
 
@@ -18,7 +18,7 @@ RESULTS_PATH = r"C:\Users\Pavilion\Documents\repos\excel_repo\results"
 today_date = datetime.datetime.now()
 today_day = today_date.strftime("%H-%M-%S.%d-%B-%Y")
 folder_path = os.path.join(RESULTS_PATH, today_day)
-os.mkdirs(folder_path)
+os.makedirs(folder_path)
 DUPLICATES_FILE = os.path.join(folder_path, 'duplicates.xlsx')
 NON_DUPLICATES_FILE = os.path.join(folder_path, 'unique.xlsx')
 NULL_FILE = os.path.join(folder_path, 'null.xlsx')

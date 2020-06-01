@@ -4,7 +4,7 @@ import os
 from excel_core import output_df
 
 # LOC = location of file to use
-LOC = r"C:\Users\PAVILION\Desktop\SampleData3.xlsx"
+LOC = r"C:\Users\PAVILION\Documents\repos\excel_repo\files\SampleData3.xlsx"
 # Column number of Header (starts from 1)
 HEADER_ROW = 1
 
@@ -15,12 +15,12 @@ LENGTH = 7
 
 # files stored in folder with syntax
 # Hour-Minute-Second.date-month-year
-# Change DESKTOP_PATH to change location of stored data
-DESKTOP_PATH = r"C:\Users\Pavilion\Desktop"
+# Change RESULTS_PATH to change location of stored data
+RESULTS_PATH = r"C:\Users\Pavilion\Documents\repos\excel_repo\results"
 today_date = datetime.datetime.now()
 today_day = today_date.strftime("%H-%M-%S.%d-%B-%Y")
-folder_path = os.path.join(DESKTOP_PATH, today_day)
-os.mkdirs(folder_path)
+folder_path = os.path.join(RESULTS_PATH, today_day)
+os.makedirs(folder_path)
 FLAGGED_FILE = os.path.join(folder_path, 'non_std_len.xlsx')
 CLEANED_FILE = os.path.join(folder_path, 'std_len.xlsx')
 LOG_FILE = os.path.join(folder_path, 'log.txt')

@@ -12,12 +12,12 @@ COL_NAME = "Order Number"
 
 # files stored in folder with syntax
 # Hour-Minute-Second.date-month-year
-# Change DESKTOP_PATH to change location of stored data
-DESKTOP_PATH = r"C:\Users\Pavilion\Desktop"
+# Change RESULTS_PATH to change location of stored data
+RESULTS_PATH = r"C:\Users\Pavilion\Documents\repos\excel_repo\results"
 today_date = datetime.datetime.now()
 today_day = today_date.strftime("%H-%M-%S.%d-%B-%Y")
-folder_path = os.path.join(DESKTOP_PATH, today_day)
-os.mkdirs(folder_path)
+folder_path = os.path.join(RESULTS_PATH, today_day)
+os.makedirs(folder_path)
 SORTED_FILE = os.path.join(folder_path, 'unique.xlsx')
 MISSING_FILE = os.path.join(folder_path, 'missing_nos.txt')
 LOG_FILE = os.path.join(folder_path, 'log.txt')

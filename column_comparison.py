@@ -27,7 +27,7 @@ RESULTS_PATH = r"C:\Users\Pavilion\Documents\repos\excel_repo\results"
 today_date = datetime.datetime.now()
 today_day = today_date.strftime("%H-%M-%S.%d-%B-%Y")
 FOLDER_PATH = os.path.join(RESULTS_PATH, today_day)
-os.mkdirs(FOLDER_PATH)
+os.makedirs(FOLDER_PATH)
 
 
 def check_dfs_and_print(
@@ -38,7 +38,8 @@ def check_dfs_and_print(
 
     Check against df_col_name for df and comp_df_col_name for comp_df.
     Output matched values to matches_file and unmatched_values to
-    non_matches_file."""
+    non_matches_file.
+    """
     values = comp_df[comp_df_col_name].values.astype(str)
     df["check"] = df[df_col_name].map(lambda x: str(x) in values)
     df.sort_values(by=df_col_name)
@@ -110,7 +111,7 @@ def compare_dfs(
 
     a_df = none_check(a_df, a_col_name, null_file_a)
     b_df = none_check(b_df, b_col_name, null_file_b)
-    
+
     a_df = duplicates_check(a_df, a_col_name, duplicates_file_a)
     b_df = duplicates_check(b_df, b_col_name, duplicates_file_b)
 
