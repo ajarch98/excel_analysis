@@ -1,3 +1,6 @@
+"""Define functions for excel file usage."""
+
+
 def duplicates_check(df, col_name, duplicates_file):
     """Detect duplicate values in col_name values.
 
