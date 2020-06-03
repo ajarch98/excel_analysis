@@ -42,15 +42,17 @@ def check_dfs_and_print(
     """
     values = comp_df[comp_df_col_name].values.astype(str)
     df["check"] = df[df_col_name].map(lambda x: str(x) in values)
-    df.sort_values(by=df_col_name)
+    df["sort"] = df[df_col_name].astype(str)
+    df = df.sort_values(by="sort")
+    df = df.drop("sort", axis=1)
 
     matched_df = df[df["check"] == True]
     matched_df = matched_df.drop(["check"], axis=1)
-    output_df(df, matches_file)
+    output_df(matched_df, matches_file)
 
     unmatched_df = df[df["check"] == False]
     unmatched_df = unmatched_df.drop(["check"], axis=1)
-    output_df(df, non_matches_file)
+    output_df(unmatched_df, non_matches_file)
 
 
 def compare_dfs(
@@ -89,6 +91,7 @@ def compare_dfs(
             f"{b_file} {b_col_name}: {non_matches_file_a}\n"
             f"NB: if {non_matches_file_a} does not exist, "
             "no empty values were found.\n"
+            "\n"
             f"Rows where {b_col_name} does not have matches in "
             f"{b_file} {a_col_name}: {non_matches_file_b}\n"
             f"NB: if {non_matches_file_b} does not exist, "
