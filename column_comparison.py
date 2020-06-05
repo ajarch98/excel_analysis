@@ -106,8 +106,8 @@ def compare_dfs(
     non_matches_file_a = os.path.join(folder_path, f'non_matches_{a_file}')
     non_matches_file_b = os.path.join(folder_path, f'non_matches_{b_file}')
 
-    duplicates_file_a = os.path.join(folder_path, f'duplicates_{a_file}')
-    duplicates_file_b = os.path.join(folder_path, f'duplicates_{b_file}')
+    # duplicates_file_a = os.path.join(folder_path, f'duplicates_{a_file}')
+    # duplicates_file_b = os.path.join(folder_path, f'duplicates_{b_file}')
 
     null_file_a = os.path.join(folder_path, f'null_{a_file}')
     null_file_b = os.path.join(folder_path, f'null_{b_file}')
@@ -115,8 +115,8 @@ def compare_dfs(
     a_df = none_check(a_df, a_col_name, null_file_a)
     b_df = none_check(b_df, b_col_name, null_file_b)
 
-    a_df = duplicates_check(a_df, a_col_name, duplicates_file_a)
-    b_df = duplicates_check(b_df, b_col_name, duplicates_file_b)
+    # a_df = duplicates_check(a_df, a_col_name, duplicates_file_a)
+    # b_df = duplicates_check(b_df, b_col_name, duplicates_file_b)
 
     check_dfs_and_print(
         a_df, b_df,
