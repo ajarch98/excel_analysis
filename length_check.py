@@ -1,7 +1,7 @@
 import pandas as pd
 import datetime
 import os
-from excel_core import output_df
+from excel_core import output_df, none_check
 
 # LOC = location of file to use
 LOC = r"C:\Users\PAVILION\Documents\repos\excel_repo\files\SampleData3.xlsx"
@@ -24,6 +24,7 @@ os.makedirs(folder_path)
 FLAGGED_FILE = os.path.join(folder_path, 'non_std_len.xlsx')
 CLEANED_FILE = os.path.join(folder_path, 'std_len.xlsx')
 LOG_FILE = os.path.join(folder_path, 'log.txt')
+NULL_FILE = ps.path.join(folder_path, 'null.xlsx')
 
 
 def output_log():
@@ -37,6 +38,8 @@ def output_log():
                f"Rows where {COL_NAME} is of standard length: {CLEANED_FILE}\n"
                f"NB, if {CLEANED_FILE} does not exist, no values with"
                f"length not of {LENGTH} were found."
+               f"Rows where {COL_NAME} is NULL: {NULL_FILE}\n"
+               f"NB, if {NULL_FILE} does not exist, no values with"
                )
     with open(LOG_FILE, 'w+') as f:
         f.write(log_str)
@@ -49,15 +52,16 @@ def check_lengths(df, length):
     Return df containing rows where column value size is not equal to LENGTH.
     """
     df["check"] = df[COL_NAME][df[COL_NAME].astype(str).str.len() != length]
-    checked_df = df[df["check"].notna()]
-    checked_df = checked_df.drop("check", axis=1)
+    flagged_df = df[df["check"].notna()]
+    flagged_df = flagged_df.drop("check", axis=1)
     cleaned_df = df[df["check"].isna()]
     cleaned_df = cleaned_df.drop("check", axis=1)
     output_df(cleaned_df, CLEANED_FILE)
-    output_df(checked_df, FLAGGED_FILE)
+    output_df(flagged_df, FLAGGED_FILE)
 
 
 if __name__ == "__main__":
     df = pd.read_excel(LOC, header=HEADER_ROW-1)
+    df = none_check(df, NULL_FILE)
     check_lengths(df, LENGTH)
     output_log()
