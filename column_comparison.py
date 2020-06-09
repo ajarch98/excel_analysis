@@ -6,7 +6,7 @@ import os
 
 # LOC = locations of file to use
 # Place primary file in A_LOC
-FILES_LOC = r"C:\Users\PAVILION\Documents\repos\excel_scripts\files"
+FILES_LOC = r"C:\Users\PAVILION\Documents\repos\excel_repo\files"
 A_FILE = "SOSI.xlsx"  # primary file
 B_FILE = "NYUMBA.xlsx"  # secondary file
 A_LOC = os.path.join(FILES_LOC, A_FILE)
@@ -48,7 +48,12 @@ def check_dfs_and_print(
 
     matched_df = df[df["check"] == True]
     matched_df = matched_df.drop(["check"], axis=1)
-    output_df(matched_df, matches_file)
+    matched_duplicates_df = matched_df[matched_df.duplicated(subset=df_col_name)]
+    cleaned_matched_df = matched_df[~matched_df.duplicated(subset=df_col_name)]
+
+    with pd.ExcelWriter(matches_file) as writer:
+        cleaned_matched_df.to_excel(writer, sheet_name="Matches")
+        matched_duplicates_df.to_excel(writer, sheet_name="Duplicates in matches")
 
     unmatched_df = df[df["check"] == False]
     unmatched_df = unmatched_df.drop(["check"], axis=1)
@@ -77,9 +82,9 @@ def compare_dfs(
             f"Rows where {a_col_name} in {a_file} is NONE: {null_file_a}\n"
             f"Rows where {b_col_name} in {b_file} is NONE: {null_file_b}\n"
             "\n"
-            f"Rows where {a_col_name} in {a_file} is duplicated: {duplicates_file_a}\n"
-            f"Rows where {b_col_name} in {b_file} is duplicated: {duplicates_file_b}\n"
-            "\n"
+            # f"Rows where {a_col_name} in {a_file} is duplicated: {duplicates_file_a}\n"
+            # f"Rows where {b_col_name} in {b_file} is duplicated: {duplicates_file_b}\n"
+            # "\n"
             f"Rows where {a_col_name} has matches in "
             f"{b_file} {b_col_name}: {matches_file_a}\n"
             f"NB: if {matches_file_a} does not exist, no matches were found\n"
